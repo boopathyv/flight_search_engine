@@ -1,0 +1,26 @@
+.submit-form input {
+    border: 0;
+    background-color: #0000000f;
+    margin-top: 0px;
+    margin-left: 0px; 
+    width: 100%;
+    cursor: pointer;
+}
+
+#search-box{
+    margin-left:0;
+}
+
+.banner .left-side {
+    background-color: rgb(0 0 0 / 0%);
+}
+
+#weather {
+    padding-top: 100px;
+    background-color: cornsilk;
+    margin-top: 0;
+}
+
+#filter-box{
+        background-color: wheat;
+}
