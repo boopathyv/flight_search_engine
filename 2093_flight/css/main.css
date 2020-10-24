@@ -86,3 +86,15 @@
     width: 20%;
     padding-top: 8px;
 }
+
+body::-webkit-scrollbar {
+  width: 0px;
+}
+body::-webkit-scrollbar-track {
+  background: lightgrey;
+}
+body::-webkit-scrollbar-thumb {
+  background-color: lightgrey; 
+  border-radius: 0px;      
+  border: 0px solid lightgrey;  
+}
