@@ -1,9 +1,6 @@
 jQuery(document).ready(function($) {
 
 	'use strict';
-      
-      $('#form-submit .date').datepicker({
-      });
     
      $("#form-submit").submit(function (event) {
             event.preventDefault();
@@ -52,61 +49,64 @@ jQuery(document).ready(function($) {
             $.post("http://localhost:8080/flight/search/fetchflight", postdata,
                    function(data, status){
                 console.log("flight data: " + data);
-                data = filterDataByDate(data, departureDate);
-                var trHTML = '';
-                $('#flight_detail_list').empty();
-                if(data.length !== 0){
-                    $("#flight_detail_list").css("display", "block");
-                    $("#flight_detail_list").css("padding-left", "0");
-                    
-                    trHTML += '<div class="flight_card_details flight_card_details_header"><div class="sub_flight_card_header"><h4 class="text_bold">AIRLINES</h4></div><div class="sub_flight_card_header"><h4 class="text_bold">DEPART</h4></div><div class="sub_flight_card_header"><h4 class="text_bold">DURATION/STOPS</h4></div><div class="sub_flight_card_header"><h4 class="text_bold">ARRIVE</h4></div><div class="sub_flight_card_header"><h4 class="text_bold">PRICE</h4></div><div class="sub_flight_card_header"><h4 class="text_bold">CABIN</h4></div></div>';
-                    
-                    $.each(data, function (i, item) {
-                    
-                    let a = new Date(data[i].departure).toTimeString();
-                    let departure = a.substr(a.indexOf(':')-2,a.lastIndexOf(':'));
-                    a = new Date(data[i].arrival).toTimeString();
-                    let arrival = a.substr(a.indexOf(':')-2,a.lastIndexOf(':'));
-                    let stop = '';
-                    switch(data[i].stops){
-                        case 0: stop='Non-Stop';break;
-                        case 1: stop='1-Stop';break;
-                        default: stop= data[i].stops+' Stops';
-                    }
-                    trHTML += '<div class="flight_card_details">'+
-                        '<div class="sub_flight_card">'+
-                            '<h4 class="text_bold">' + data[i].flightName + '</h4>'+
-                            '<h4>' + data[i].id + '</h4>'+
-                        '</div>'+
-                        '<div class="sub_flight_card">'+
-                            '<h4 class="text_bold">' + data[i].source + '</h4>'+
-                            '<h4 >' + departure + '</h4>'+
-                        '</div>'+
-                        '<div class="sub_flight_card">'+
-                            '<h4 class="text_bold">' + data[i].duration + ' hrs</h4>'+
-                            '<h4 >' + stop + '</h4>'+
-                        '</div>'+
-                        '<div class="sub_flight_card">'+
-                            '<h4 class="text_bold">' + data[i].destination + '</h4>'+
-                            '<h4 >' + arrival + '</h4>'+
-                        '</div>'+
-                        '<div class="sub_flight_card">'+
-                            '<h2 class="text_bold">Rs. ' + data[i].price + '/-</h2>'+
-                        '</div>'+
-                        '<div class="sub_flight_card">'+
-                            '<h4 class="text_bold">' + data[i].cabin + '</h4>'+
-                            '<h4 >' + data[i].offercode + '</h4>'+
-                        '</div>'+
-                    '</div>';
-                    });
-                }else{
-                    trHTML += '<div class="logo" style="align-self: center;">'+
-                            '<img src="img/logo.png" alt="Flight Template"><h1>NO FLIGHTS FOUND...'+ '</h1></div>';
-                    $("#flight_detail_list").css("display", "flex");
-                    $("#flight_detail_list").css("padding-left", "25%");
-                }
-                $('#flight_detail_list').append(trHTML);
+                loadFlightDetails(data, departureDate);
             });
+    }
+    
+    function loadFlightDetails(data, departureDate){
+        data = filterDataByDate(data, departureDate);
+        var trHTML = '';
+        $('#flight_detail_list').empty();
+        if(data.length !== 0){
+            $("#flight_detail_list").css("display", "block");
+            $("#flight_detail_list").css("padding-left", "0");
+                    
+            trHTML += '<div class="flight_card_details flight_card_details_header"><div class="sub_flight_card_header"><h4 class="text_bold">AIRLINES</h4></div><div class="sub_flight_card_header"><h4 class="text_bold">DEPART</h4></div><div class="sub_flight_card_header"><h4 class="text_bold">DURATION/STOPS</h4></div><div class="sub_flight_card_header"><h4 class="text_bold">ARRIVE</h4></div><div class="sub_flight_card_header"><h4 class="text_bold">PRICE</h4></div><div class="sub_flight_card_header"><h4 class="text_bold">CABIN</h4></div></div>';
+                    
+            $.each(data, function (i, item) {                    
+                let a = new Date(data[i].departure).toTimeString();
+                let departure = a.substr(a.indexOf(':')-2,a.lastIndexOf(':'));
+                a = new Date(data[i].arrival).toTimeString();
+                let arrival = a.substr(a.indexOf(':')-2,a.lastIndexOf(':'));
+                let stop = '';
+                switch(data[i].stops){
+                    case 0: stop='Non-Stop';break;
+                    case 1: stop='1-Stop';break;
+                    default: stop= data[i].stops+' Stops';
+                }
+                trHTML += '<div class="flight_card_details">'+
+                    '<div class="sub_flight_card">'+
+                    '<h4 class="text_bold">' + data[i].flightName + '</h4>'+
+                    '<h4>' + data[i].id + '</h4>'+
+                    '</div>'+
+                    '<div class="sub_flight_card">'+
+                    '<h4 class="text_bold">' + data[i].source + '</h4>'+
+                    '<h4 >' + departure + '</h4>'+
+                    '</div>'+
+                    '<div class="sub_flight_card">'+
+                    '<h4 class="text_bold">' + data[i].duration + ' hrs</h4>'+
+                    '<h4 >' + stop + '</h4>'+
+                    '</div>'+
+                    '<div class="sub_flight_card">'+
+                    '<h4 class="text_bold">' + data[i].destination + '</h4>'+
+                    '<h4 >' + arrival + '</h4>'+
+                    '</div>'+
+                    '<div class="sub_flight_card">'+
+                    '<h2 class="text_bold">Rs. ' + data[i].price + '/-</h2>'+
+                    '</div>'+
+                    '<div class="sub_flight_card">'+
+                    '<h4 class="text_bold">' + data[i].cabin + '</h4>'+
+                    '<h4 >' + data[i].offercode + '</h4>'+
+                    '</div>'+
+                    '</div>';
+            });
+        }else{
+            trHTML += '<div class="logo" style="align-self: center;">'+
+                '<img src="img/logo.png" alt="Flight Template"><h1>NO FLIGHTS FOUND...'+ '</h1></div>';
+            $("#flight_detail_list").css("display", "flex");
+            $("#flight_detail_list").css("padding-left", "25%");
+        }
+        $('#flight_detail_list').append(trHTML);
     }
     
     function filterDataByDate(data, departureDate){
@@ -175,42 +175,6 @@ jQuery(document).ready(function($) {
             }
        });
     }
-    
-    function onFromLocationSelect(){
-        console.log("Hai from source");
-    }
-    
-    function onToLocationSelect(){
-         console.log("Hai from destination");
-    }
 
-        $(".pop-button").click(function () {
-            $(".pop").fadeIn(300);
-            
-        });
-
-        $(".pop > span").click(function () {
-            $(".pop").fadeOut(300);
-        });
-
-
-        $(window).on("scroll", function() {
-            if($(window).scrollTop() > 100) {
-                $(".header").addClass("active");
-            } else {
-                //remove the background property so it comes transparent again (defined in your css)
-               $(".header").removeClass("active");
-            }
-        });
-
-
-	/************** Mixitup (Filter Projects) *********************/
-    	$('.projects-holder').mixitup({
-            effects: ['fade','grayscale'],
-            easing: 'snap',
-            transitionSpeed: 400
-        });
-
-
-      init();
+    init();
 });

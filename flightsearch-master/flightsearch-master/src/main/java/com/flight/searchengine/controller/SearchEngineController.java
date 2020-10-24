@@ -11,9 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.flight.searchengine.entity.FlightDetails;
-import com.flight.searchengine.repository.SearchEngineRepository;
 import com.flight.searchengine.service.SearchEngineService;
-//import com.flight.searchengine.service.SearchEngineServiceImpl;
 
 import lombok.AllArgsConstructor;
 
@@ -22,9 +20,6 @@ import lombok.AllArgsConstructor;
 @CrossOrigin
 @AllArgsConstructor
 public class SearchEngineController {
-	
-	@Autowired
-	private SearchEngineRepository repo;
 	
 	@Autowired
 	private SearchEngineService service;
@@ -60,16 +55,6 @@ public class SearchEngineController {
 		return service.getOfferCode();
 	}
 	
-//	@RequestMapping("/fetchFlight")
-////	public List<FlightDetails> fetchFlight(@RequestBody FlightDetails request){
-////		List<FlightDetails> a= repo.getAvailableFlights( request.getSource(), request.getDestination()) ;
-//	public List<FlightDetails> fetchFlight(@RequestParam String source, @RequestParam String destination, @RequestParam Timestamp departure, @RequestParam(required=false, defaultValue="2500") int price, @RequestParam(required=false, defaultValue="4") long duration, @RequestParam(required=false) String flightName, @RequestParam(required=false) String offercode){ 
-//		//List<FlightDetails> flightDetails= repo.getAvailableFlights(source, destination, departure, price, duration, flightName, offercode) ;
-//		List<FlightDetails> flightDetails= service.getAvailableFlights(source, offercode) ;
-//
-//		return flightDetails;
-//	}
-	
 	@PostMapping("/fetchflight")
 	public List<FlightDetails> fetchFlight(@RequestParam String source, @RequestParam String destination,  @RequestParam Long departureTime,
 			@RequestParam(required=false) Integer stops, @RequestParam(required=false) String price, @RequestParam(required=false) String duration,
@@ -78,18 +63,4 @@ public class SearchEngineController {
 		return flightDetails;
 	}
 	
-	
-//	@RequestMapping("/fetchByStops")
-//	public List<FlightDetails> fetchByStops(@RequestParam int stops){
-//		List<FlightDetails> a= repo.findByStops( stops) ;
-//		return a;
-//	}
-//	
-//
-//	@RequestMapping("/fetchByDuration")
-//	public List<FlightDetails> fetchByDuration(@RequestParam long duration){
-//		List<FlightDetails> a= repo.findByDuration( duration) ;
-//		return a;
-//		
-//	}
 }
