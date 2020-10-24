@@ -22,6 +22,17 @@ jQuery(document).ready(function($) {
             searchFlights();
      });
     
+     $('#airline-select').change(function (event) {
+            searchFlights();
+     });
+    
+     $('#class-select').change(function (event) {
+            searchFlights();
+     });
+    
+     $('#coupon-select').change(function (event) {
+            searchFlights();
+     });
     
     function searchFlights(){
             var postdata = {
@@ -30,7 +41,10 @@ jQuery(document).ready(function($) {
                 'departureTime' : new Date($("#departure-time").val()).getTime(),
                 'duration' : $("#duration-sort-select").val(),
                 'stops': $("input[name='stops']:checked").val(),
-                'price': $("#price-sort-select").val()
+                'price': $("#price-sort-select").val(),
+                'flightName' : $("#airline-select").val(),
+                'cabin' : $("#class-select").val(),
+                'offercode' : $("#coupon-select").val()
             }
             $.post("http://localhost:8080/flight/search/fetchflight", postdata,
                    function(data, status){
@@ -73,6 +87,9 @@ jQuery(document).ready(function($) {
            console.log(data);
            loadAllSources();
            loadAllDestinations();
+           loadAllAirlines();
+           loadAllCabins();
+	       loadAllOfferCodes();
        });
     }
     
@@ -90,6 +107,33 @@ jQuery(document).ready(function($) {
             console.log("destinations :",data);
             for (var i = 0; i < data.length; i++) {
                $('#to-location-select').append('<option value="' + data[i] + '">' + data[i] + '</option>');
+            }
+       });
+    }
+    
+    function loadAllAirlines(){
+       $.get("http://localhost:8080/flight/search/getAirlines", function(data, status){
+            console.log("airlines :",data);
+            for (var i = 0; i < data.length; i++) {
+               $('#airline-select').append('<option value="' + data[i] + '">' + data[i] + '</option>');
+            }
+       });
+    }
+    
+    function loadAllCabins(){
+       $.get("http://localhost:8080/flight/search/getCabins", function(data, status){
+            console.log("cabins :",data);
+            for (var i = 0; i < data.length; i++) {
+               $('#class-select').append('<option value="' + data[i] + '">' + data[i] + '</option>');
+            }
+       });
+    }
+    
+    function loadAllOfferCodes(){
+       $.get("http://localhost:8080/flight/search/getOfferCode", function(data, status){
+            console.log("offer codes :",data);
+            for (var i = 0; i < data.length; i++) {
+               $('#coupon-select').append('<option value="' + data[i] + '">' + data[i] + '</option>');
             }
        });
     }

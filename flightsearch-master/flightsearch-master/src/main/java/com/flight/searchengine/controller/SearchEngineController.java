@@ -1,6 +1,5 @@
 package com.flight.searchengine.controller;
 
-import java.sql.Timestamp;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,7 +45,20 @@ public class SearchEngineController {
 		return service.getAllDestinations();
 	}
 	
+	@GetMapping("/getAirlines")
+	public List<String> getAirlines(){
+		return service.getAirlines();
+	}
 	
+	@GetMapping("/getCabins")
+	public List<String> getCabins(){
+		return service.getCabins();
+	}
+	
+	@GetMapping("/getOfferCode")
+	public List<String> getOfferCode(){
+		return service.getOfferCode();
+	}
 	
 //	@RequestMapping("/fetchFlight")
 ////	public List<FlightDetails> fetchFlight(@RequestBody FlightDetails request){
@@ -59,8 +71,10 @@ public class SearchEngineController {
 //	}
 	
 	@PostMapping("/fetchflight")
-	public List<FlightDetails> fetchFlight(@RequestParam String source, @RequestParam String destination,  @RequestParam Long departureTime, @RequestParam(required=false) Integer stops, @RequestParam(required=false) String price, @RequestParam(required=false) String duration, @RequestParam(required=false) String flightName, @RequestParam(required=false) String offercode){ 
-		List<FlightDetails> flightDetails= service.getAvailableFlights(source, destination, departureTime, stops, price, duration, flightName, offercode) ;
+	public List<FlightDetails> fetchFlight(@RequestParam String source, @RequestParam String destination,  @RequestParam Long departureTime,
+			@RequestParam(required=false) Integer stops, @RequestParam(required=false) String price, @RequestParam(required=false) String duration,
+			@RequestParam(required=false) String flightName, @RequestParam(required=false) String offercode,@RequestParam(required=false) String cabin){ 
+		List<FlightDetails> flightDetails= service.getAvailableFlights(source, destination, departureTime, stops, price, duration, flightName, offercode, cabin) ;
 		return flightDetails;
 	}
 	

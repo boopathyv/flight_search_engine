@@ -52,12 +52,29 @@ public class SearchEngineService{
 				long timestamparr = Timestamp.valueOf(data[4]).getTime();	
 				e.setArrival(timestamparr);
 				e.setOffercode(data[5]);
-				e.setId(Integer.parseInt(data[6]));
+				e.setId(data[6]);
 				e.setStops(Integer.parseInt(data[7]));
 				e.setDuration(Long.parseLong(data[8]));
 				e.setPrice(Integer.parseInt(data[9]));
 				e.setCabin(data[10]);
 				repo.save(e);
+				
+//				System.out.println("Line"+line);
+//				data=line.split(",");
+//				e.setId(data[0]);
+//				e.setFlightName(data[1]);
+//				e.setSource(data[2]);
+//				e.setDestination(data[3]);
+//				long timestampdep = Timestamp.valueOf(data[4]).getTime();
+//				e.setDeparture(timestampdep);
+//				long timestamparr = Timestamp.valueOf(data[5]).getTime();	
+//				e.setArrival(timestamparr);
+//				e.setDuration(Long.parseLong(data[6]));
+//				e.setStops(Integer.parseInt(data[7]));
+//				e.setCabin(data[8]);
+//				e.setOffercode(data[9]);
+//				e.setPrice(Integer.parseInt(data[10]));
+//				repo.save(e);
 			}
 		}catch(IOException exp){
 
@@ -67,7 +84,7 @@ public class SearchEngineService{
 	
 	
 		
-		public List<FlightDetails> getAvailableFlights(String source,String destination,Long departureTime, Integer stops, String price,String duration,String flightName,String offercode){
+		public List<FlightDetails> getAvailableFlights(String source,String destination,Long departureTime, Integer stops, String price,String duration,String flightName,String offercode, String cabin){
 	        return repo.findAll(new Specification<FlightDetails>() {
 	            @Override
 	            public Predicate toPredicate(Root<FlightDetails> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
@@ -81,6 +98,9 @@ public class SearchEngineService{
 	                }
 	                if(departureTime!=null) {
 	                    predicates.add(criteriaBuilder.and(criteriaBuilder.greaterThanOrEqualTo(root.get("departure"), departureTime)));
+	                }
+	                if(cabin!=null && !cabin.isEmpty()) {
+	                    predicates.add(criteriaBuilder.and(criteriaBuilder.equal(root.get("cabin"), cabin)));
 	                }
 	                if (stops != null) {
 	                	if (stops > 2) {
@@ -103,10 +123,10 @@ public class SearchEngineService{
 	                }else if(duration.equals("DESC")){
 	                	orderList.add(criteriaBuilder.desc(root.get("duration")));
 	                }
-	                if(flightName!=null) {
+	                if(flightName!=null && !flightName.isEmpty()) {
 	                    predicates.add(criteriaBuilder.and(criteriaBuilder.equal(root.get("flightName"), flightName)));
 	                }
-	                if(offercode!=null) {
+	                if(offercode!=null && !offercode.isEmpty()) {
 	                    predicates.add(criteriaBuilder.and(criteriaBuilder.equal(root.get("offercode"), offercode)));
 	                }
 	                if(!orderList.isEmpty()){
@@ -119,6 +139,18 @@ public class SearchEngineService{
 
 		public List<String> getAllDestinations() {
 			return repo.findAllDestination();
+		}
+
+		public List<String> getAirlines() {
+			return repo.findAllAirlines();
+		}
+
+		public List<String> getCabins() {
+			return repo.findAllCabins();
+		}
+
+		public List<String> getOfferCode() {
+			return repo.findAllOfferCode();
 		}
 
 	

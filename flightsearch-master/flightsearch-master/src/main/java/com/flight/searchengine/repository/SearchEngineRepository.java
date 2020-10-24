@@ -20,6 +20,15 @@ public interface SearchEngineRepository extends CrudRepository<FlightDetails, In
 	@Query(value = "SELECT distinct destination FROM FLIGHT_DETAILS", nativeQuery = true)
 	List<String> findAllDestination();
 
+	@Query(value = "SELECT distinct flight_name FROM FLIGHT_DETAILS", nativeQuery = true)
+	List<String> findAllAirlines();
+
+	@Query(value = "SELECT distinct cabin FROM FLIGHT_DETAILS", nativeQuery = true)
+	List<String> findAllCabins();
+
+	@Query(value = "SELECT distinct offercode FROM FLIGHT_DETAILS", nativeQuery = true)
+	List<String> findAllOfferCode();
+
 //	@Modifying
 //	@Query(value = "SELECT * FROM FLIGHT_DETAILS flights WHERE "
 //			+ " flights.source = :source AND flights.destination = :destination AND flights.departure >= :departure AND flights.price <= :price AND flights.duration <= :duration AND flights.flight_Name = :flight_Name AND flights.offercode = :offercode", 

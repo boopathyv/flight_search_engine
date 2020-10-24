@@ -14,7 +14,7 @@ public class FlightDetails {
 
 	@Id
 	@Column
-	private int id;
+	private String id;
 		
 	@Column(name= "flight_name") 
     private String flightName;

@@ -3,13 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<!--
 
-Template 2093 Flight
-
-http://www.tooplate.com/view/2093-flight
-
--->
     	<title>Flight - Travel and Tour</title>
     
         <meta name="description" content="">
@@ -92,15 +86,13 @@ http://www.tooplate.com/view/2093-flight
     </section>
 
 
-
     <div class="tabs-content" id="weather">
         <div class="container">
             <div class="row">
-
                 <div id="filter-box" class="col-md-4">
                 <div class="col-md-10 flit-sec no-padd sidebar-offcanvas" id="sidebar">
                     <div class="filt-bag">
-                        <h2 class="txt-32"> FILTER <a style="color: #4263c1; float:right; width:40%; font-size:10px;" href="#" ng-click="ClearAllFilter()">CLEAR ALL</a> </h2>
+                        <h2 class="txt-32"> FILTER </h2>
                     </div>
                    <div class="row no-margn">
                         <div class="col-md-10 col-md-offset-1 col-xs-1 col-xs-offset-1 arrow-down sto1"></div>
@@ -160,90 +152,35 @@ http://www.tooplate.com/view/2093-flight
                     <div class="row no-margn">
                         <div class="col-md-10 col-md-offset-1 col-xs-1 col-xs-offset-1 arrow-down airl1"></div>
                         <div class="col-md-10 col-xs-4 no-padd"> Airlines </div>
-                        <div class="col-md-10 col-xs-5 no-padd"><div class="shw">
-						<label class="ctr_cbox">Show all
-						 <input name="" class="airline ng-pristine ng-untouched ng-valid ng-not-empty" type="checkbox" value="" ng-model="ShowAllAirline" ng-click="ShowAll()" id="ShowAllFlight">
-						  <span class="cmark_cbox"></span>
-						</label>					
-						</div></div>
-                        <div class="clearfix"></div>
-                        <div id="chkBoxMatrixAirlines" class="row no-margn airl1-sec pad-btm">
-                            <!-- ngRepeat: (id, mdtl) in mtx --><div class="showOnlyNthAirlines ng-scope" data-ng-repeat="(id, mdtl) in mtx" ng-init="FillArrAirline()" data-my-repeat-directive-for-airlines="">
-                                
-                                <div class="col-md-10 col-xs-1 padd-lt19">
-								<label class="ctr_cbox" style="float: left;">
-  <input name="" class="airline" type="checkbox" value="" ng-mouseup="hideShow()" id="GoAir" ng-click="SetFilterValue('Airline',this.id,GetAirLineName(id))">
-  <span class="cmark_cbox"></span>
-</label>
-								</div> 
-                                <div class="col-md-10 img-p col-xs-2">
-                                    <!-- following div for domestic -->
-                                    <!-- ngIf: isDomestic --><div ng-if="isDomestic" class="airimgG8-ss"></div><!-- end ngIf: isDomestic -->
-                                    <!-- following div for international -->
-                                    <!-- ngIf: !isDomestic -->
-                                </div>
-                                <div class="col-md-10 col-xs-4 ft-10 no-padd ng-binding" ng-bind="GetAirLineName(id)">GoAir</div>
-                                <div class="col-md-3 col-xs-3 ft-10 no-padd ng-binding">Rs. <span ng-bind="mdtl | split:'|':1" class="ng-binding">4218</span></div>
-                                
-                                <div class="clearfix"></div>
-                            </div><!-- end ngRepeat: (id, mdtl) in mtx --><div class="showOnlyNthAirlines ng-scope" data-ng-repeat="(id, mdtl) in mtx" ng-init="FillArrAirline()" data-my-repeat-directive-for-airlines="">
-                                
-                                <div class="col-md-10 col-xs-1 padd-lt19">
-								<label class="ctr_cbox" style="float: left;">
-  <input name="" class="airline" type="checkbox" value="" ng-mouseup="hideShow()" id="SpiceJet" ng-click="SetFilterValue('Airline',this.id,GetAirLineName(id))">
-  <span class="cmark_cbox"></span>
-</label>
-								</div> 
-                                <div class="col-md-10 img-p col-xs-2">
-                                    <!-- following div for domestic -->
-                                    <!-- ngIf: isDomestic --><div ng-if="isDomestic" class="airimgSG-ss"></div><!-- end ngIf: isDomestic -->
-                                    <!-- following div for international -->
-                                    <!-- ngIf: !isDomestic -->
-                                </div>
-                                <div class="col-md-10 col-xs-4 ft-10 no-padd ng-binding" ng-bind="GetAirLineName(id)">SpiceJet</div>
-                                <div class="col-md-10 col-xs-3 ft-10 no-padd ng-binding">Rs. <span ng-bind="mdtl | split:'|':1" class="ng-binding">4322</span></div>
-                                
-                                <div class="clearfix"></div>
-                            </div><!-- end ngRepeat: (id, mdtl) in mtx --><div class="showOnlyNthAirlines ng-scope" data-ng-repeat="(id, mdtl) in mtx" ng-init="FillArrAirline()" data-my-repeat-directive-for-airlines="">
-                                
-                                <div class="col-md-10 col-xs-1 padd-lt19">
-								<label class="ctr_cbox" style="float: left;">
-  <input name="" class="airline" type="checkbox" value="" ng-mouseup="hideShow()" id="Indigo" ng-click="SetFilterValue('Airline',this.id,GetAirLineName(id))">
-  <span class="cmark_cbox"></span>
-</label>
-								</div> 
-                                <div class="col-md-10 img-p col-xs-2">
-                                    <!-- following div for domestic -->
-                                    <!-- ngIf: isDomestic --><div ng-if="isDomestic" class="airimg6E-ss"></div><!-- end ngIf: isDomestic -->
-                                    <!-- following div for international -->
-                                    <!-- ngIf: !isDomestic -->
-                                </div>
-                                <div class="col-md-10 col-xs-4 ft-10 no-padd ng-binding" ng-bind="GetAirLineName(id)">Indigo</div>
-                                <div class="col-md-10 col-xs-3 ft-10 no-padd ng-binding">Rs. <span ng-bind="mdtl | split:'|':1" class="ng-binding">4583</span></div>
-                                
-                                <div class="clearfix"></div>
-                            </div><!-- end ngRepeat: (id, mdtl) in mtx --><div class="showOnlyNthAirlines ng-scope" data-ng-repeat="(id, mdtl) in mtx" ng-init="FillArrAirline()" data-my-repeat-directive-for-airlines="">
-                                
-                                <div class="col-md-10 col-xs-1 padd-lt19">
-								<label class="ctr_cbox" style="float: left;">
-  <input name="" class="airline" type="checkbox" value="" ng-mouseup="hideShow()" id="Air India" ng-click="SetFilterValue('Airline',this.id,GetAirLineName(id))">
-  <span class="cmark_cbox"></span>
-</label>
-								</div> 
-                                <div class="col-md-10 img-p col-xs-2">
-                                    <!-- following div for domestic -->
-                                    <!-- ngIf: isDomestic --><div ng-if="isDomestic" class="airimgAI-ss"></div><!-- end ngIf: isDomestic -->
-                                    <!-- following div for international -->
-                                    <!-- ngIf: !isDomestic -->
-                                </div>
-                                <div class="col-md-10 col-xs-4 ft-10 no-padd ng-binding" ng-bind="GetAirLineName(id)">Air India</div>
-                                <div class="col-md-10 col-xs-3 ft-10 no-padd ng-binding">Rs. <span ng-bind="mdtl | split:'|':1" class="ng-binding">4584</span></div>
-                                
-                                <div class="clearfix"></div>
-                            </div><!-- end ngRepeat: (id, mdtl) in mtx -->
+                        <div class="col-md-6">
+                            <fieldset>
+                                <select id="airline-select" required name='from'>
+                                    <option value="">Show All</option>
+                                </select>
+                            </fieldset>
                         </div>
-                        <div id="ShowMore"><a href="#"> More +</a></div>
-                        <div id="ShowLess" style="display:none"><a href="#"> Show Less -</a></div>
+                    </div>
+                    <div class="row no-margn">
+                        <div class="col-md-10 col-md-offset-1 col-xs-1 col-xs-offset-1 arrow-down airl1"></div>
+                        <div class="col-md-10 col-xs-4 no-padd"> Class </div>
+                        <div class="col-md-6">
+                            <fieldset>
+                                <select id="class-select" required name='from'>
+                                    <option value="">Show All</option>
+                                </select>
+                            </fieldset>
+                        </div>
+                    </div>
+                    <div class="row no-margn">
+                        <div class="col-md-10 col-md-offset-1 col-xs-1 col-xs-offset-1 arrow-down airl1"></div>
+                        <div class="col-md-10 col-xs-4 no-padd"> Coupon Code </div>
+                        <div class="col-md-6">
+                            <fieldset>
+                                <select id="coupon-select" required name='from'>
+                                    <option value="">Show All</option>
+                                </select>
+                            </fieldset>
+                        </div>
                     </div>
                 </div>
             </div>
