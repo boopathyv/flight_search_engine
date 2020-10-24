@@ -86,20 +86,18 @@
     </section>
 
 
-    <div class="tabs-content" id="weather">
-        <div class="container">
-            <div class="row">
-                <div id="filter-box" class="col-md-4">
-                <div class="col-md-10 flit-sec no-padd sidebar-offcanvas" id="sidebar">
+    <div class="tabs-content" id="flight_search_details">
+        <div class="container" id="internal-container">
+                <div id="filter-box" class="col-md-4 sidenav">
+                    <div class="col-md-10 flit-sec no-padd sidebar-offcanvas" id="sidebar">
                     <div class="filt-bag">
-                        <h2 class="txt-32"> FILTER </h2>
+                        <h1 class="txt-32 text_bold"> FILTERS </h1>
                     </div>
                    <div class="row no-margn">
                         <div class="col-md-10 col-md-offset-1 col-xs-1 col-xs-offset-1 arrow-down sto1"></div>
-                        <div class="col-md-10 col-xs-4 no-padd"> Price </div>
+                        <h4 class="col-md-10 col-xs-4 no-padd text_bold"> Price </h4>
                         <div class="col-md-10 col-xs-5 no-padd">
                             <fieldset>
-                                <label for="from">Sort By :</label>
                                 <select id="price-sort-select" required name='from'>
                                     <option value="ASC">Low To High</option>
                                     <option value="DESC">High To Low</option>
@@ -111,36 +109,33 @@
                 <div class="row border-b3"></div>
 
                 <div class="row no-margn">
-                    
-                    <div class="row no-margn">
                         <div class="col-md-10 col-md-offset-1 col-xs-1 col-xs-offset-1 arrow-down sto1"></div>
-                        <div class="col-md-10 col-xs-4 no-padd"> Stops </div>
+                        <h4 class="col-md-10 col-xs-4 no-padd text_bold"> Stops </h4>
                         <div class="col-md-10 col-xs-5 no-padd">
-                            <div class="row">
+                            <div>
                                 <input class="stop_button" type="radio" id="show-all-stops" name="stops" value="3" checked="checked">
-                                <label for="3">Show All</label><br>
+                                <label for="show-all-stops">Show All</label><br>
                             </div>
-                            <div class="row">
+                            <div>
                                 <input class="stop_button" type="radio" id="no-stop" name="stops" value="0">
-                                <label for="0">NonStop</label><br>
+                                <label for="no-stop">NonStop</label><br>
                             </div>
-                            <div class="row">
+                            <div>
                                 <input class="stop_button" type="radio" id="one-stop" name="stops" value="1">
-                                <label for="1">1 Stop</label>
+                                <label for="one-stop">1 Stop</label>
                             </div>
-                            <div class="row">
+                            <div>
                                 <input class="stop_button" type="radio" id="two-plus-stop" name="stops" value="2">
-                                <label for="2">2+ Stops</label>
+                                <label for="two-plus-stop">2+ Stops</label>
                             </div>
                         </div>
-                    </div>
+                </div>
                     <div class="row border-b3"></div>
                     <div class="row no-margn">
                         <div class="col-md-10 col-md-offset-1 col-xs-1 col-xs-offset-1 arrow-down sto1"></div>
-                        <div class="col-md-10 col-xs-4 no-padd"> Duration </div>
+                        <h4 class="col-md-10 col-xs-4 no-padd text_bold"> Duration </h4>
                         <div class="col-md-10 col-xs-5 no-padd">
                             <fieldset>
-                                <label for="from">Sort By :</label>
                                 <select id="duration-sort-select" required name='from'>
                                     <option value="ASC">Low To High</option>
                                     <option value="DESC">High To Low</option>
@@ -151,7 +146,7 @@
                     <div class="row border-b3"></div>
                     <div class="row no-margn">
                         <div class="col-md-10 col-md-offset-1 col-xs-1 col-xs-offset-1 arrow-down airl1"></div>
-                        <div class="col-md-10 col-xs-4 no-padd"> Airlines </div>
+                        <h4 class="col-md-10 col-xs-4 no-padd text_bold"> Airlines </h4>
                         <div class="col-md-6">
                             <fieldset>
                                 <select id="airline-select" required name='from'>
@@ -162,7 +157,7 @@
                     </div>
                     <div class="row no-margn">
                         <div class="col-md-10 col-md-offset-1 col-xs-1 col-xs-offset-1 arrow-down airl1"></div>
-                        <div class="col-md-10 col-xs-4 no-padd"> Class </div>
+                        <h4 class="col-md-10 col-xs-4 no-padd text_bold"> Cabin </h4>
                         <div class="col-md-6">
                             <fieldset>
                                 <select id="class-select" required name='from'>
@@ -173,7 +168,7 @@
                     </div>
                     <div class="row no-margn">
                         <div class="col-md-10 col-md-offset-1 col-xs-1 col-xs-offset-1 arrow-down airl1"></div>
-                        <div class="col-md-10 col-xs-4 no-padd"> Coupon Code </div>
+                        <h4 class="col-md-10 col-xs-4 no-padd text_bold"> Coupon Code </h4>
                         <div class="col-md-6">
                             <fieldset>
                                 <select id="coupon-select" required name='from'>
@@ -183,14 +178,10 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            </div>
-                <div class="col-md-8">
-                    <table id="flight-details" border='1'>
-                        
-                    </table>
                 </div>
-            </div>
+                <div id="flight_detail_list" class="col-md-8">
+                    
+                </div>
         </div>
     </div>
 
